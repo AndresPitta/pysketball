@@ -26,3 +26,4 @@ def nba_ranking(data, column_name, by, top = 10):
     >>> nba_data = pd.read_csv("data/nba_data.csv")
     >>> nba_ranking(nba_data, 'Player', 'TD3', 10)
     """
+    return (1)
