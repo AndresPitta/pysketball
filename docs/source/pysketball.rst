@@ -4,6 +4,30 @@ pysketball package
 Submodules
 ----------
 
+pysketball.nba\_boxplot module
+------------------------------
+
+.. automodule:: pysketball.nba_boxplot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pysketball.nba\_ranking module
+------------------------------
+
+.. automodule:: pysketball.nba_ranking
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pysketball.nba\_scraper module
+------------------------------
+
+.. automodule:: pysketball.nba_scraper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pysketball.nbastats module
 --------------------------
 

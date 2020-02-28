@@ -13,6 +13,7 @@ pandas = "^1.0.1"
 sphinx = "^2.4.3"
 
 pytest = "^5.3.5"
+sphinxcontrib-napoleon = "^0.7"
 
 [build-system]
 requires = ["poetry>=0.12"]
