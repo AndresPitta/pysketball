@@ -5,10 +5,10 @@
 
 The developing team members are:
 
-* Anand Shankar
+* Anand Shankar, <vanandshankar@yahoo.com>
 * Andres Pitta, <apitta6@gmail.com> 
-* Carlina Kim 
-* Kenneth Foo 
+* Carlina Kim, <carlinaa.kim@gmail.com> 
+* Kenneth Foo, <kfoofw@gmail.com>
 
 ## Contributors
 
