@@ -1,6 +1,6 @@
 # pysketball 
 
-![](https://github.com/AndresPitta/pysketball/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/AndresPitta/pysketball/branch/master/graph/badge.svg)](https://codecov.io/gh/AndresPitta/pysketball) ![Release](https://github.com/AndresPitta/pysketball/workflows/Release/badge.svg)
+![](https://github.com/UBC-MDS/pysketball/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/UBC-MDS/pysketball/branch/master/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/pysketball) ![Release](https://github.com/UBC-MDS/pysketball/workflows/Release/badge.svg)
 
 [![Documentation Status](https://readthedocs.org/projects/pysketball/badge/?version=latest)](https://pysketball.readthedocs.io/en/latest/?badge=latest)
 
