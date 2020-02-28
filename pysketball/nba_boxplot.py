@@ -1,11 +1,7 @@
-import numpy as np
-import pandas as pd
-import altair as alt
-
 def nba_boxplot(dataset, yaxis, xaxis):
     """
-    Creates a boxplot of the categorical variable of interest on the y axis and 
-    the stat of interest on the xaxis.
+    Creates a boxplot of the categorical variable of interest on the y-axis and 
+    the stat of interest on the x-axis.
 
     Parameters:
     -----------
@@ -24,6 +20,7 @@ def nba_boxplot(dataset, yaxis, xaxis):
     Returns:
     --------
     display : altair boxplot visual
+        Boxplot 
 
     Examples:
     ---------
