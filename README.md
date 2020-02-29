@@ -5,7 +5,7 @@
 [![Documentation Status](https://readthedocs.org/projects/pysketball/badge/?version=latest)](https://pysketball.readthedocs.io/en/latest/?badge=latest)
 
 This package is designated for all NBA enthusiasts! This package works
-to scrap online tabular data from ESPN NBA website into a csv file. It
+to scrape online tabular data from ESPN NBA website into a csv file. It
 also includes various functions to create graphs and statistical
 analysis for your interest (such as boxplots, player rankings by stats,
 and a summary statistics table).
