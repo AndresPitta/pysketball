@@ -8,7 +8,7 @@ import time
 
 def nba_scraper(season_year, season_type = "regular", csv_path = None):
     """
-    Scrapes data from ESPN NBA data and returns a pandas DataFrame. User can specify the year of the season (2016, 2017, etc) and the season type (regular or playoffs). 
+    Scrapes data from ESPN NBA data and returns a pandas DataFrame. User can specify the year of the season (2016, 2017, etc) and the season type (regular or postseason). 
     If `csv_path` is given, the scraped data will be written to csv based on input path.
     
     Parameters
@@ -19,6 +19,11 @@ def nba_scraper(season_year, season_type = "regular", csv_path = None):
         A string input of the NBA season type (either "regular" or playoff). Default is "regular".
     csv_path_name : string
         A string input stating the path to store the scraped csv file and ending with ".csv". Default is None.
+
+     Returns
+    -------
+    pandas.DataFrame 
+        scraped data in DataFrame format
 
     Examples
     --------
@@ -34,7 +39,7 @@ def nba_scraper(season_year, season_type = "regular", csv_path = None):
     if (round(season_year) != season_year) or (season_year < 2001) or (season_year > 2019):
         raise TypeError("season_year must be an integer that is between 2001 to 2019")      
 
-    # Check season_type is not "regular" or "playoffs"
+    # Check season_type is not "regular" or "postseason"
     if ((season_type != "postseason") & (season_type != "regular")):
         raise TypeError("'season_type' must be either 'regular' or 'postseason'")
 
