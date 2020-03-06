@@ -3,10 +3,10 @@ def nba_team_stats(nba_data, stats_filter = None, teams_filter = None, positions
     """
     Generate summary stats for NBA players.
 
-    The function filters the dataset further using the arguments provided and
-    produces a tibble with summary statistics for a list of columns of a few players or teams.
-    The function can only use one of the two filters - playerNames and teamNames. Hence, If playerNames
-    are provided, teamNames are ignored.
+    The function provides descriptive team statistics of NBA data. Users can specify which
+    statistic of interest (3PA, 3PM, etc) along with teams of interest (GS, HOU, etc). If positions of
+    interest (C, PG, etc) are specified, the returned dictionary depicts relevant descriptive statistics for the
+    relevant positions in the relevant teams.
 
     Parameters
     ----------
@@ -28,8 +28,11 @@ def nba_team_stats(nba_data, stats_filter = None, teams_filter = None, positions
     --------
     >>> from pysketball import nba_team_stats
     >>> nba_team_stats.nba_team_stats(nba_data, stats_filter = ['GP', '3PM', 'FT%'])
-    >>> nba_team_stats.nba_team_stats(nba_data, stats_filter = ['GP', '3PM', 'FT%'], teams_filter = ['UTAH', 'PHX', 'DET'])
-    >>> nba_team_stats.nba_team_stats(nba_data, stats_filter = ['GP', '3PM', 'FT%'], teams_filter = ['UTAH', 'PHX', 'DET'], positions_filter = ['C', 'PG'])
+    >>> nba_team_stats.nba_team_stats(nba_data, stats_filter = ['GP', '3PM', 'FT%'],
+                                      teams_filter = ['UTAH', 'PHX', 'DET'])
+    >>> nba_team_stats.nba_team_stats(nba_data, stats_filter = ['GP', '3PM', 'FT%'],
+                                      teams_filter = ['UTAH', 'PHX', 'DET'],
+                                      positions_filter = ['C', 'PG'])
     """
     # Check if nba_data is a DataFrame
     if not isinstance(nba_data, pd.DataFrame):
