@@ -33,7 +33,7 @@ pip install -i https://test.pypi.org/simple/ pysketball
 - `nba_ranking`
   * Generates a ranking and a visualization based on a column of a dataset  
   
-- `nba_tem_stats`
+- `nba_team_stats`
   * Generate summary stats for NBA players. The function provides descriptive team statistics of NBA data.
 
 
