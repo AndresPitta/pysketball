@@ -2,7 +2,16 @@ from pysketball import nba_team_stats
 import pandas as pd
 from pytest import raises
 
+
 def test_nba_team_stats():
+    """
+    The function tests the nba_team_stats function with various ranges of values to ensure the functionality is not
+    broken
+
+    Examples
+    --------
+    >>> test_nba_team_stats()
+    """
 
     # Sample test inputs
     sample_stats_filter = ['GP', '3PM', 'FT%']
