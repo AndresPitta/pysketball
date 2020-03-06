@@ -1,5 +1,5 @@
 import pandas as pd
-def nba_team_stats(nba_data, stats_filter, teams_filter, positions_filter):
+def nba_team_stats(nba_data, stats_filter = None, teams_filter = None, positions_filter = None):
     """
     Generate summary stats for NBA players.
 
@@ -31,37 +31,39 @@ def nba_team_stats(nba_data, stats_filter, teams_filter, positions_filter):
     >>> nba_team_stats.nba_team_stats(nba_data, stats_filter = ['GP', '3PM', 'FT%'], teams_filter = ['UTAH', 'PHX', 'DET'])
     >>> nba_team_stats.nba_team_stats(nba_data, stats_filter = ['GP', '3PM', 'FT%'], teams_filter = ['UTAH', 'PHX', 'DET'], positions_filter = ['C', 'PG'])
     """
-    # Check for incorrect inputs
     if not isinstance(nba_data, pd.DataFrame):
-      print("Not dataframe")
+        print("Not dataframe")
 
     # Filter data on teams
-    if len(teams_filter) != 0:
-      nba_data = nba_data[nba_data['Team'].isin(teams_filter)]
+    if teams_filter != None:
+        nba_data = nba_data[nba_data['Team'].isin(teams_filter)]
 
     # Filter data on positions
-    if len(positions_filter) != 0:
-      nba_data = nba_data[nba_data['POS'].isin(positions_filter)]
+    if positions_filter != None:
+        nba_data = nba_data[nba_data['POS'].isin(positions_filter)]
 
     # Select stats to include
-    if len(stats_filter) != 0:
-      stats_filter = ['PLAYER', 'Team', 'POS'] + stats_filter
-      nba_data = nba_data[stats_filter]
+    if stats_filter != None:
+        stats_filter = ['PLAYER', 'Team', 'POS'] + stats_filter
+        nba_data = nba_data[stats_filter]
 
     # If all inputs (stats, teams, and positions) are NULL, show all
-    if len(stats_filter) == 0 and len(teams_filter) == 0 and len(positions_filter) == 0:
-      nba_data = nba_data
+    if stats_filter == None and teams_filter == None and positions_filter == None:
+        nba_data = nba_data
 
     # Generate summary
     # If position is null, only group_by Teams
-    if len(positions_filter) == 0:
-      group_by = ['Team']
+    if positions_filter == None:
+        group_by = ['Team']
     else:
-      group_by = ['Team', 'POS']
+        group_by = ['Team', 'POS']
 
-      stats = dict()
-      stats_filter = [stat for stat in stats_filter if stat not in ('PLAYER', 'Team', 'POS')]
-      for stat in stats_filter:
+    stats = dict()
+    if stats_filter == None:
+        stats_filter = list(nba_data.columns.values)
+
+    stats_filter = [stat for stat in stats_filter if stat not in ('PLAYER', 'Team', 'POS')]
+    for stat in stats_filter:
         stats[stat] = nba_data.groupby(group_by).describe()[stat]
 
-        return stats
+    return stats
