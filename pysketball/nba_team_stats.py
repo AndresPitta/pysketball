@@ -31,8 +31,21 @@ def nba_team_stats(nba_data, stats_filter = None, teams_filter = None, positions
     >>> nba_team_stats.nba_team_stats(nba_data, stats_filter = ['GP', '3PM', 'FT%'], teams_filter = ['UTAH', 'PHX', 'DET'])
     >>> nba_team_stats.nba_team_stats(nba_data, stats_filter = ['GP', '3PM', 'FT%'], teams_filter = ['UTAH', 'PHX', 'DET'], positions_filter = ['C', 'PG'])
     """
+    # Check if nba_data is a DataFrame
     if not isinstance(nba_data, pd.DataFrame):
-        print("Not dataframe")
+        raise TypeError("nba_data must be a DataFrame.")
+
+    # Check if teams_filter is a list
+    if not isinstance(teams_filter, list) and teams_filter != None:
+        raise TypeError("teams_filter must be a list")
+
+    # Check if stats_filter is a list
+    if not isinstance(stats_filter, list) and stats_filter != None:
+        raise TypeError("stats_filter must be a list")
+
+    # Check if positions_filter is a list
+    if not isinstance(positions_filter, list) and positions_filter != None:
+        raise TypeError("positions_filter must be a list")
 
     # Filter data on teams
     if teams_filter != None:
