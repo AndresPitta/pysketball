@@ -44,6 +44,44 @@ The official documentation is currently in development and not available now. We
 
 <https://pysketball.readthedocs.io/en/latest/>
 
+### Testing
+
+The `pysketball` package uses the Selenium tool as part of its `nba_scraper` function. Thus, it is necessary to install a webdriver for Selenium's automated driver web browsing. 
+
+To streamline the package, the `nba_scraper` function has been configured to use `chromedriver`. Thus, please ensure that `chromedriver` is installed. 
+
+__Step 1: Chromedriver installation__
+
+If you are using Linux, you can use the following command:
+```sh
+sudo apt-get install chromium-chromedriver
+```
+
+If you are using Mac/Apple, you can use the following command:
+```sh
+brew cask install chromedriver
+```
+For download installation, please download it from this [website](https://chromedriver.chromium.org/downloads). 
+
+After installing, you have to determine the location of the `chromedriver binary files.
+
+```sh
+whereis chromedriver
+```
+
+With that, add it to your PATH in your `.bashrc` file.
+
+```sh
+export PATH="<PATH_TO_CHROMEDRIVER.EXE>:$PATH"
+```
+__Step 2: Install Poetry to run Pytest__
+
+Ensure that you have `poetry` installed in your system. When that is done, proceed to run `pytest` at the project repo root.
+
+```sh
+poetry run pytest
+```
+
 ### Credits
 This package was created with Cookiecutter and the UBC-MDS/cookiecutter-ubc-mds project template, modified from the [pyOpenSci/cookiecutter-pyopensci](https://github.com/pyOpenSci/cookiecutter-pyopensci) project template and the [audreyr/cookiecutter-pypackage](https://github.com/audreyr/cookiecutter-pypackage).
 
