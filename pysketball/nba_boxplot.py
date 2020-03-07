@@ -60,23 +60,34 @@ def nba_boxplot(dataset, stats, position=None, teams=None):
     
     
     
+    
     #Plots 
     if position== 'POS' and teams is None: 
         
         chart =alt.Chart(dataset).mark_boxplot().encode(
-            alt.Y('POS:N', title= 'Position'),
-            alt.X('stats:Q', title= stats)
-        ).properties(width=600, height = 300, title= ("Plot for Position and stats in Dataset"))
-    
+            alt.Y('POS:N', 
+                  title= 'Position'),
+            alt.X('stats:Q',
+                  title= stats)
+        ).properties(
+            width=600, 
+            height = 300, 
+            title= ("Plot for Position and stats in Dataset"))
+      
     elif position is None and teams is not None:
         
         dataset = dataset[dataset['Team'].isin(teams)]
         
         chart = alt.Chart(dataset).mark_boxplot().encode(
-            alt.Y('Team:N', title= 'Teams'),
-            alt.X('stats:Q', title= stats)
-        ).properties(width=600, height = 300, title= ("Plot for Teams and Stats in Dataset"))
-    
-    
+            alt.Y('Team:N', 
+                  title= 'Teams'),
+            alt.X('stats:Q', 
+                  title= stats)
+        ).properties(
+            width=600, 
+            height = 300, 
+            title= ("Plot for Teams and Stats in Dataset"))
+      
+      
     return chart
     
