@@ -26,3 +26,8 @@ def test_nba_boxplot():
         
     with raises(TypeError, match= "stats argument has to be numeric"):
         nba_boxplot.nba_boxplot(nba_2018, stats= "Team", position= "POS")
+        
+
+    assert isinstance(nba_boxplot.nba_boxplot(nba_2018, stats= "GP", teams= ("ORL", "UTAH", "LAC"))[1], alt.vegalite.v4.api.LayerChart)
+
+    assert isinstance(nba_boxplot.nba_boxplot(nba_2018, stats= "GP", position= 'POS', teams= None)[1], alt.vegalite.v4.api.LayerChart)
