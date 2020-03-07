@@ -1,6 +1,8 @@
 from pysketball import nba_ranking
 from pytest import raises
 import pandas as pd
+import altair as alt
+import numpy as np
 import warnings
 
 data_dictionary = {'A': [1, 2, 3],
@@ -21,32 +23,32 @@ def test_nba_ranking_input():
     
      # Test wrong data input
     with raises(TypeError):
-        nba_ranking.nba_ranking('A', 'C' , 'B', top = 2, descending = True, fun = 'mean')
+        nba_ranking.nba_ranking('A', 'C' , 'B', top = 2, ascending = True, fun = 'mean')
             
      # Test wrong column input
     with raises(TypeError):
-        nba_ranking.nba_ranking(data, ['C'] , 'B', top = 2, descending = True, fun = 'mean')
+        nba_ranking.nba_ranking(data, ['C'] , 'B', top = 2, ascending = True, fun = 'mean')
             
     # Test wrong by input
     with raises(TypeError):
-        nba_ranking.nba_ranking(data, 'C' , ['B'], top = 2, descending = True, fun = 'mean')
+        nba_ranking.nba_ranking(data, 'C' , ['B'], top = 2, ascending = True, fun = 'mean')
             
     # Test wrong top input
     with raises(TypeError):
-        nba_ranking.nba_ranking(data, 'C' , 'B', top = 'a', descending = True, fun = 'mean')
+        nba_ranking.nba_ranking(data, 'C' , 'B', top = 'a', ascending = True, fun = 'mean')
             
-    # Test wrong descending input
+    # Test wrong ascending input
     with raises(TypeError):
-        nba_ranking.nba_ranking(data, 'C' , 'B', top = 2, descending = 'a', fun = 'mean')
+        nba_ranking.nba_ranking(data, 'C' , 'B', top = 2, ascending = 'a', fun = 'mean')
         
     # Test wrong descending input
     with raises(TypeError):
-        nba_ranking.nba_ranking(data, 'C' , 'B', top = 2, descending = True, fun = 'a')
+        nba_ranking.nba_ranking(data, 'C' , 'B', top = 2, ascending = True, fun = 'a')
       
     # Testing the warning 
     with warnings.catch_warnings(record=True):
         warnings.simplefilter("always")
-        nba_ranking.nba_ranking(data, 'C' , 'B', top = 100, descending = True, fun = 'mean')
+        nba_ranking.nba_ranking(data, 'C' , 'B', top = 100, ascending = True, fun = 'mean')
         
 def test_nba_ranking_output():
     '''
@@ -58,6 +60,6 @@ def test_nba_ranking_output():
     
     '''
     
-    assert isinstance(nba_ranking(data, 'C' , 'B', top = 2, ascending = False, fun = 'mean'), tuple)
-    assert isinstance(nba_ranking(data, 'C' , 'B', top = 2, ascending = False, fun = 'mean')[0],pd.DataFrame)
-    assert isinstance(nba_ranking(data, 'C' , 'B', top = 2, ascending = False, fun = 'mean')[1], alt.vegalite.v3.api.LayerChart)
+    assert isinstance(nba_ranking.nba_ranking(data, 'C' , 'B', top = 2, ascending = False, fun = 'mean'), tuple)
+    assert isinstance(nba_ranking.nba_ranking(data, 'C' , 'B', top = 2, ascending = True, fun = 'mean')[0],pd.DataFrame)
+    assert isinstance(nba_ranking.nba_ranking(data, 'C' , 'B', top = 2, ascending = False, fun = 'mean')[1], alt.vegalite.v4.api.LayerChart)
