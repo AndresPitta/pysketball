@@ -48,8 +48,12 @@ def nba_ranking(data, column, by, top = 10, ascending = True, fun = 'mean'):
         
     # The by argument should be a str
     if not isinstance(by, str):
-        raise TypeError("The data is not a pandas df")
-        
+        raise TypeError("The by argument should be a")
+
+    # The descending argument should be a boolean
+    if not isinstance(top, int):
+        raise TypeError("The top argument should be numerical")
+
     # The descending argument should be a boolean
     if not isinstance(ascending, bool):
         raise TypeError("The ascending argument should be a boolean")
@@ -70,7 +74,7 @@ def nba_ranking(data, column, by, top = 10, ascending = True, fun = 'mean'):
     #Warning to control the number of elements
     number_elements = len(data[column].unique())
     if top > number_elements:
-        warnings.warn(f'The number of elements in the ranking is smaller than the one provided. \n Changing top value from {top} to {number_elements}', Warning)
+        #warnings.warn(f'The number of elements in the ranking is smaller than the one provided. \n Changing top value from {top} to {number_elements}', Warning)
         top = number_elements
     
     # Beginning of the function

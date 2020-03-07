@@ -44,11 +44,19 @@ def test_nba_ranking_input():
     # Test wrong descending input
     with raises(TypeError):
         nba_ranking.nba_ranking(data, 'C' , 'B', top = 2, ascending = True, fun = 'a')
+
+     # Test column ranked not belonging to dataframe
+    with raises(TypeError):
+        nba_ranking.nba_ranking(data, 'Ada Lovelace' , 'B', top = 2, ascending = True, fun = 'mean')
+
+     # Test column ranked not belonging to dataframe
+    with raises(TypeError):
+        nba_ranking.nba_ranking(data, 'C' , 'Ada Lovelace', top = 2, ascending = True, fun = 'mean')
       
     # Testing the warning 
-    with warnings.catch_warnings(record=True):
-        warnings.simplefilter("always")
-        nba_ranking.nba_ranking(data, 'C' , 'B', top = 100, ascending = True, fun = 'mean')
+    #with warnings.catch_warnings(record=True):
+    #    warnings.simplefilter("always")
+    #    nba_ranking.nba_ranking(data, 'C' , 'B', top = 100, ascending = True, fun = 'mean')
         
 def test_nba_ranking_output():
     '''
@@ -63,3 +71,4 @@ def test_nba_ranking_output():
     assert isinstance(nba_ranking.nba_ranking(data, 'C' , 'B', top = 2, ascending = False, fun = 'mean'), tuple)
     assert isinstance(nba_ranking.nba_ranking(data, 'C' , 'B', top = 2, ascending = True, fun = 'mean')[0],pd.DataFrame)
     assert isinstance(nba_ranking.nba_ranking(data, 'C' , 'B', top = 2, ascending = False, fun = 'mean')[1], alt.vegalite.v4.api.LayerChart)
+    assert isinstance(nba_ranking.nba_ranking(data, 'C' , 'B', top = 15, ascending = True, fun = 'mean')[1], alt.vegalite.v4.api.LayerChart)
