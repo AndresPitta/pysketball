@@ -42,7 +42,7 @@ The official documentation is currently in development and not available now. We
 
 <https://pysketball.readthedocs.io/en/latest/>
 
-### Testing
+### Usage and Testing Instructions/Requirements
 
 The `pysketball` package uses the Selenium tool as part of its `nba_scraper` function. Thus, it is necessary to install a webdriver for Selenium's automated driver web browsing. 
 
@@ -67,17 +67,30 @@ After installing, you have to determine the location of the `chromedriver binary
 whereis chromedriver
 ```
 
-With that, add it to your PATH in your `.bashrc` file.
+With that, add it to your PATH in your `.bashrc` file for Linux and Mac users.
 
 ```sh
 export PATH="<PATH_TO_CHROMEDRIVER.EXE>:$PATH"
 ```
-__Step 2: Install Poetry to run Pytest__
 
-Ensure that you have `poetry` installed in your system. When that is done, proceed to run `pytest` at the project repo root.
+For Windows, please refer to this [article guide for instructions on adding PATH variables](https://helpdeskgeek.com/windows-10/add-windows-path-environment-variable/).
+
+__Step 2A: Testing (with `poetry` and `pytest`)__
+
+Ensure that you have `poetry` installed in your system. When that is done, proceed to run the following code at the project repo root in Command line/Terminal.
 
 ```sh
 poetry run pytest
+```
+
+__Step 2B: Usage of `nba_scraper`__
+
+To use the `nba_scraper.nba_scraper` function, please start Python and run the following code in Python:
+
+```py
+>>> from pysketball.nba_scraper import nba_scraper
+>>> # Scrape regular season 2018/19 and return a dataframe while storing it as csv file called "nba_2018.csv"
+>>> nba_scraper(season_year = 2018, season_type = "regular", csv_path = "nba_2018.csv")
 ```
 
 ### Credits
