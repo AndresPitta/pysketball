@@ -28,10 +28,10 @@ pysketball.nba\_scraper module
    :undoc-members:
    :show-inheritance:
 
-pysketball.nbastats module
---------------------------
+pysketball.nba\_team\_stats module
+----------------------------------
 
-.. automodule:: pysketball.nbastats
+.. automodule:: pysketball.nba_team_stats
    :members:
    :undoc-members:
    :show-inheritance:

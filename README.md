@@ -4,8 +4,14 @@
 
 [![Documentation Status](https://readthedocs.org/projects/pysketball/badge/?version=latest)](https://pysketball.readthedocs.io/en/latest/?badge=latest)
 
-This package is designated for all NBA enthusiasts! This package works to scrap online tabular data from ESPN NBA website and uses various functions to create graphs and statistical analysis. These include boxplots, rankings, and a summary statistics table.  
-An example of the 2018/19 player stats can be found in the following url:
+This package is designated for all NBA enthusiasts! This package works
+to scrape online tabular data from ESPN NBA website into a csv file. It
+also includes various functions to create graphs and statistical
+analysis for your interest (such as boxplots, player rankings by stats,
+and a summary statistics table).
+
+An example of the ESPN NBA 2018/19 Regular season player stats can be
+found in the following url:
 
 https://www.espn.com/nba/stats/player/_/season/2019/seasontype/2
 
@@ -27,21 +33,72 @@ pip install -i https://test.pypi.org/simple/ pysketball
 - `nba_ranking`
   * Generates a ranking and a visualization based on a column of a dataset  
   
-- `nbastats`
-  * Generate summary stats for NBA players.
-    The function filters the dataset further using the arguments provided and
-    produces a tibble with summary statistics for a list of columns of a few players or teams.
+- `nba_team_stats`
+  * Generate summary stats for NBA players. The function provides descriptive team statistics of NBA data.
 
 
 ### Documentation
-The official documentation is hosted on Read the Docs: <https://pysketball.readthedocs.io/en/latest/>
+The official documentation is currently in development and not available now. We estimate that it will be hosted on "Read the Docs" by end March 2020: 
+
+<https://pysketball.readthedocs.io/en/latest/>
+
+### Usage and Testing Instructions/Requirements
+
+The `pysketball` package uses the Selenium tool as part of its `nba_scraper` function. Thus, it is necessary to install a webdriver for Selenium's automated driver web browsing. 
+
+To streamline the package, the `nba_scraper` function has been configured to use `chromedriver`. Thus, please ensure that `chromedriver` is installed. 
+
+__Step 1: Chromedriver installation__
+
+If you are using Linux, you can use the following command:
+```sh
+sudo apt-get install chromium-chromedriver
+```
+
+If you are using Mac/Apple, you can use the following command:
+```sh
+brew cask install chromedriver
+```
+For download installation, please download it from this [website](https://chromedriver.chromium.org/downloads). 
+
+After installing, you have to determine the location of the `chromedriver binary files.
+
+```sh
+whereis chromedriver
+```
+
+With that, add it to your PATH in your `.bashrc` file for Linux and Mac users.
+
+```sh
+export PATH="<PATH_TO_CHROMEDRIVER.EXE>:$PATH"
+```
+
+For Windows, please refer to this [article guide for instructions on adding PATH variables](https://helpdeskgeek.com/windows-10/add-windows-path-environment-variable/).
+
+__Step 2A: Testing (with `poetry` and `pytest`)__
+
+Ensure that you have `poetry` installed in your system. When that is done, proceed to run the following code at the project repo root in Command line/Terminal.
+
+```sh
+poetry run pytest
+```
+
+__Step 2B: Usage of `nba_scraper`__
+
+To use the `nba_scraper.nba_scraper` function, please start Python and run the following code in Python:
+
+```py
+>>> from pysketball.nba_scraper import nba_scraper
+>>> # Scrape regular season 2018/19 and return a dataframe while storing it as csv file called "nba_2018.csv"
+>>> nba_scraper(season_year = 2018, season_type = "regular", csv_path = "nba_2018.csv")
+```
 
 ### Credits
 This package was created with Cookiecutter and the UBC-MDS/cookiecutter-ubc-mds project template, modified from the [pyOpenSci/cookiecutter-pyopensci](https://github.com/pyOpenSci/cookiecutter-pyopensci) project template and the [audreyr/cookiecutter-pypackage](https://github.com/audreyr/cookiecutter-pypackage).
 
 ### Python Ecosystem 
 
-This 'rsketball' package aims to further gain understanding of ESPN NBA data and does not have a specific fit to the Python ecosystem. There are currently no similar packages in Python. 
+This `pysketball` package aims to further gain understanding of ESPN NBA data and does not have a specific fit to the Python ecosystem. There are currently some similar packages in Python such as [`nba_api`](https://pypi.org/project/nba-api/) which takes data from sources such as NBA, but we do not know of any that takes data from ESPN NBA.
 
 
 
