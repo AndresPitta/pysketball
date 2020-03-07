@@ -34,7 +34,7 @@ pip install -i https://test.pypi.org/simple/ pysketball
   * Generates a ranking and a visualization based on a column of a dataset  
   
 - `nba_team_stats`
-  * Generate summary stats for NBA players. The function provides descriptive team statistics of NBA data.
+  * Generate summary stats for NBA teams. The function provides descriptive statistics of NBA data for teams and player positions if specified.
 
 
 ### Documentation
@@ -77,21 +77,46 @@ For Windows, please refer to this [article guide for instructions on adding PATH
 
 __Step 2A: Testing (with `poetry` and `pytest`)__
 
-Ensure that you have `poetry` installed in your system. When that is done, proceed to run the following code at the project repo root in Command line/Terminal.
+Ensure that you have `poetry` installed in your system. To install, please see the [`poetry` installation instructions](https://python-poetry.org/docs/#installation).
+
+Please also ensure that an internet connection is available to perform testing. 
+
+Note that performing the tests will take about slightly under 10 minutes as some function tests perform actual scraping. Please be patient in the mean time!
+
+When that is done, proceed to run the following code at the project repo root in Command line/Terminal.
 
 ```sh
 poetry run pytest
 ```
 
+To check for test coverage, proceed to run the following code at the project repo root in Command line/Terminal.
+
+```sh
+poetry run pytest --cov=pysketball tests/
+```
+
 __Step 2B: Usage of `nba_scraper`__
 
-To use the `nba_scraper.nba_scraper` function, please start Python and run the following code in Python:
+To use the `nba_scraper.nba_scraper` function, please also ensure that an internet connection is available to perform testing. Proceed to start Python and run the following code in Python:
 
 ```py
 >>> from pysketball.nba_scraper import nba_scraper
->>> # Scrape regular season 2018/19 and return a dataframe while storing it as csv file called "nba_2018.csv"
->>> nba_scraper(season_year = 2018, season_type = "regular", csv_path = "nba_2018.csv")
+>>> # Scrape regular season 2018/19 and return a dataframe while storing it as csv file called "nba_2018_regular.csv"
+>>> nba_2018_regular = nba_scraper(season_year = 2018, season_type = "regular", csv_path = "nba_2018_regular.csv")
 ```
+
+With the scraped data in the form of a `pandas.DataFrame` called `nba_2018_regular`, you can proceed to use the other functions in `pysketball`.
+
+```py
+>>> from pysketball.nba_boxplot import nba_boxplot
+>>> from pysketball.nba_ranking import nba_ranking
+>>> from pysketball.nba_team_stats import nba_team_stats
+>>> # Scrape regular season 2018/19 and return a dataframe while storing it as csv file called "nba_2018_regular.csv"
+>>> nba_boxplot(nba_2018_regular, position= "POS", teams= None, stats= "GP")
+>>> nba_ranking(nba_2018_regular, 'PLAYER' , 'GP', top = 2, ascending = False, fun = 'mean')
+>>> nba_team_stats.nba_team_stats(nba_2018_regular, stats_filter = ['GP', '3PM', 'FT%'],teams_filter = ['UTAH', 'PHX', 'DET'],positions_filter = ['C', 'PG'])
+```
+
 
 ### Credits
 This package was created with Cookiecutter and the UBC-MDS/cookiecutter-ubc-mds project template, modified from the [pyOpenSci/cookiecutter-pyopensci](https://github.com/pyOpenSci/cookiecutter-pyopensci) project template and the [audreyr/cookiecutter-pypackage](https://github.com/audreyr/cookiecutter-pypackage).
