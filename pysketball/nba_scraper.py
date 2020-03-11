@@ -3,12 +3,8 @@ import time
 import pandas as pd
 
 from selenium import webdriver
-# from selenium.webdriver.common.by import By
-
 
 from selenium.webdriver import chrome
-# from selenium.webdriver.support.ui import WebDriverWait
-# from selenium.webdriver.support import expected_conditions as EC
 
 
 def nba_scraper(season_year, season_type="regular", csv_path=None):
@@ -101,7 +97,7 @@ def nba_scraper(season_year, season_type="regular", csv_path=None):
                 'section/div/div[3]/div/a')
             button.click()
             time.sleep(2)
-        except:
+        except Exception:
             break
 
     # Obtain the two main components of the table: Player and Stats tables.
