@@ -52,15 +52,15 @@ def nba_boxplot(dataset, stats, position=None, teams=None):
     # throw error if both teams and position is used
     if teams and position is not None:
         raise ValueError(
-            "position and teams argument cannot be used simultaneously, \
-                 choose one"
+            "position and teams argument cannot be used simultaneously, " +
+            "choose one"
         )
 
     # throw error if neither teams and position is used
     if teams is None and position is None:
         raise ValueError(
-            "Empty arguments, choose either position or teams argument \
-            for plot"
+            "Empty arguments, choose either position or teams argument " +
+            "for plot"
         )
 
     # set stats column chosen as new column
