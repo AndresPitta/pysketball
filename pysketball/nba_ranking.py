@@ -96,8 +96,8 @@ def nba_ranking(data, column, by, top=10, ascending=True, fun='mean'):
     transformed_data['ranking'] = pd.Series(
         range(0, len(transformed_data[by])), index=transformed_data.index) + 1
 
-    transformed_data['text'] = transformed_data['ranking'].astype(str) +
-        " - " + transformed_data[column].astype(str) + " " +
+    transformed_data['text'] = transformed_data['ranking'].astype(str) + \
+        " - " + transformed_data[column].astype(str) + " " + \
         transformed_data[by].astype(str)
 
     # Plotting
