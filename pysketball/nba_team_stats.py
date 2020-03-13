@@ -59,6 +59,24 @@ def nba_team_stats(nba_data, stats_filter=None, teams_filter=None,
     if not isinstance(positions_filter, list) and positions_filter is not None:
         raise TypeError("positions_filter must be a list")
 
+    # Check if the stats_filter elements exist in the dataframe
+    if stats_filter is not None:
+        if not set(stats_filter).issubset(set(nba_data.columns)):
+            raise TypeError("Columns mentioned in stats_filter not found" +
+                            " in data")
+
+    # Check if the positions_filter elements exist in the dataframe
+    if positions_filter is not None:
+        if not set(positions_filter).issubset(set(nba_data['POS'].unique())):
+            raise TypeError("Columns mentioned in positions_filter not found" +
+                            " in data")
+
+    # Check if the teams_filter elements exist in the dataframe
+    if teams_filter is not None:
+        if not set(teams_filter).issubset(set(nba_data['Team'].unique())):
+            raise TypeError("Columns mentioned in teams_filter not found" +
+                            " in data")
+
     # Filter data on teams
     if teams_filter is not None:
         nba_data = nba_data[nba_data['Team'].isin(teams_filter)]
