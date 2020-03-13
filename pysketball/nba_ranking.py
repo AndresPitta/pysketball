@@ -51,7 +51,7 @@ def nba_ranking(data, column, by, top=10, ascending=True, fun='mean'):
 
     # The by argument should be a str
     if not isinstance(by, str):
-        raise TypeError("The by argument should be a")
+        raise TypeError("The by argument should be a string")
 
     # The descending argument should be a boolean
     if not isinstance(top, int):

@@ -30,8 +30,8 @@ def test_nba_boxplot():
     # testing position and teams used simultaneously
     with raises(ValueError, match="position and teams argument cannot be " +
                 "used simultaneously, choose one"):
-        nba_boxplot.nba_boxplot(nba_2018, stats="GP", position="POS", teams=(
-            "ORL", "UTAH", "LAC", "MIN", "BOS"))
+        nba_boxplot.nba_boxplot(nba_2018, stats="GP", position="POS", teams=[
+            "ORL", "UTAH", "LAC", "MIN", "BOS"])
 
     # testing position and teams empty arguments
     with raises(ValueError, match="Empty arguments, choose either position " +
@@ -39,15 +39,30 @@ def test_nba_boxplot():
         nba_boxplot.nba_boxplot(nba_2018, stats="GP",
                                 position=None, teams=None)
 
+    # testing for wrong teams input
+    with raises(TypeError, match="teams must be a list"):
+        nba_boxplot.nba_boxplot(
+            nba_2018, stats="GP", position=None, teams='None')
+
+    # Test position column not belonging to dataframe
+    with raises(TypeError):
+        nba_boxplot.nba_boxplot(
+            nba_2018, stats="GP", position='PdOS', teams=None)
+
+    # Test stats column not belonging to dataframe
+    with raises(TypeError):
+        nba_boxplot.nba_boxplot(
+            nba_2018, stats="GdP", position='POS', teams=None)
+
     # testing wrong stats type
     with raises(TypeError, match="stats argument has to be numeric"):
         nba_boxplot.nba_boxplot(nba_2018, stats="Team", position="POS")
 
     # testing plot output for teams
-    assert isinstance(nba_boxplot.nba_boxplot(nba_2018, stats="GP", teams=(
-        "ORL", "UTAH", "LAC")), alt.vegalite.v4.api.Chart)
+    assert isinstance(nba_boxplot.nba_boxplot(nba_2018, stats="GP", teams=[
+        "ORL", "UTAH", "LAC"]), alt.vegalite.api.Chart)
 
     # testing plot output for position
     assert isinstance(nba_boxplot.nba_boxplot(
         nba_2018, stats="GP", position='POS', teams=None),
-        alt.vegalite.v4.api.Chart)
+        alt.vegalite.api.Chart)

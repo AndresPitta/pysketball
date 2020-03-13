@@ -63,6 +63,18 @@ def nba_boxplot(dataset, stats, position=None, teams=None):
             "for plot"
         )
 
+    # Check if teams is a list
+    if not isinstance(teams, list) and teams is not None:
+        raise TypeError("teams must be a list")
+
+    # Checks if the position exists in the dataframe
+    if position is not None and position not in dataset.columns:
+        raise TypeError(f"Column {position} not found in data")
+
+    # Checks if the stats exists in the dataframe
+    if stats not in dataset.columns:
+        raise TypeError(f"Column {stats} not found in data")
+
     # set stats column chosen as new column
     dataset['stats'] = dataset.loc[:, stats]
 
