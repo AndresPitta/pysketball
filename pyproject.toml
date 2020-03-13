@@ -1,9 +1,13 @@
 [tool.poetry]
 name = "pysketball"
-version = "0.1.0"
+version = "1.0.0"
 description = "This is a Python package that scraps tabular ESPN NBA data from https://www.espn.com/nba/stats/player/_/season/2019/seasontype/2 and processes it"
 authors = ["Andres Pitta <apitta6@gmail.com>"]
 license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/UBC-MDS/pysketball"
+repository = "https://github.com/UBC-MDS/pysketball"
+documentation = 'https://pysketball.readthedocs.io'
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -13,6 +17,7 @@ numpy = "^1.18.1"
 altair = "^4.0.1"
 selenium = "^3.141.0"
 requests = "^2.23.0"
+python-semantic-release = "^4.10.0"
 
 
 [tool.poetry.dev-dependencies]
