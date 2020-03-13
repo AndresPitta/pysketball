@@ -19,6 +19,10 @@ def test_nba_team_stats():
     sample_stats_filter = ['GP', '3PM', 'FT%']
     sample_teams_filter = ['UTAH', 'DET']
     sample_positions_filter = ['C', 'PG']
+
+    invalid_stats_filter = ['A', 'B', 'C']
+    invalid_teams_filter = ['A', 'B']
+    invalid_positions_filter = ['A', 'B']
     nba_data = pd.read_csv(
         "https://raw.githubusercontent.com/kfoofw/nba_espn/master/0.data/" +
         "NBA_reg_2018-2019.csv")
@@ -35,6 +39,24 @@ def test_nba_team_stats():
     with raises(TypeError):
         nba_team_stats.nba_team_stats(
             nba_data, positions_filter='sample_positions_filter')
+    with raises(TypeError):
+        nba_team_stats.nba_team_stats(
+            nba_data,
+            positions_filter=invalid_positions_filter,
+            stats_filter=sample_stats_filter,
+            teams_filter=sample_teams_filter)
+    with raises(TypeError):
+        nba_team_stats.nba_team_stats(
+            nba_data,
+            positions_filter=sample_positions_filter,
+            stats_filter=invalid_stats_filter,
+            teams_filter=sample_teams_filter)
+    with raises(TypeError):
+        nba_team_stats.nba_team_stats(
+            nba_data,
+            positions_filter=sample_positions_filter,
+            stats_filter=sample_stats_filter,
+            teams_filter=invalid_teams_filter)
 
     # General output tests
     result = nba_team_stats.nba_team_stats(nba_data)
