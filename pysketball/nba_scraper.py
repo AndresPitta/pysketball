@@ -110,18 +110,19 @@ def nba_scraper(season_year, season_type="regular", csv_path=None):
 
     # Initiate empty dataframe
     df = pd.DataFrame(index=[i for i in range(len(plyr_trs))],
-                      columns=['PLAYER', 'Team', 'POS', 'GP', 'MIN', 'PTS',
+                      columns=['NAME', 'TEAM', 'POS', 'GP', 'MIN', 'PTS',
                                'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%',
                                'FTM', 'FTA', 'FT%', 'REB', 'AST',
-                               'STL', 'BLK', 'TO', 'DD2', 'TD3', 'PER'])
+                               'STL', 'BLK', 'TO', 'DD2', 'TD3', 'PER']
+                      )
 
     # For loop based on each player
     for i in range(len(plyr_trs)):
 
         # Table 1: Player name and Team
-        df.loc[i, "PLAYER"] = plyr_trs[i].find_element_by_xpath(
+        df.loc[i, "NAME"] = plyr_trs[i].find_element_by_xpath(
             './/td[2]/div/a').text
-        df.loc[i, "Team"] = plyr_trs[i].find_element_by_xpath(
+        df.loc[i, "TEAM"] = plyr_trs[i].find_element_by_xpath(
             './/td[2]/div/span').text
 
         # Table 2: Player Position and Stats
@@ -151,6 +152,14 @@ def nba_scraper(season_year, season_type="regular", csv_path=None):
 
     # Stop driver
     driver.close()
+
+    # Types
+    columns = ['GP', 'MIN', 'PTS', 'FGM', 'FGA',
+               'FG%', '3PM', '3PA', '3P%', 'FTM',
+               'FTA', 'FT%', 'REB', 'AST', 'STL',
+               'BLK', 'TO', 'DD2', 'TD3', 'PER']
+
+    df[columns] = df[columns].astype('float')
 
     # If csv_path is given, store df
     if (csv_path is not None):

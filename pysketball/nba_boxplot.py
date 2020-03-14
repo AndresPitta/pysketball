@@ -97,10 +97,10 @@ def nba_boxplot(dataset, stats, position=None, teams=None):
 
     elif position is None and teams is not None:
 
-        dataset = dataset[dataset['Team'].isin(teams)]
+        dataset = dataset[dataset['TEAM'].isin(teams)]
 
         chart = alt.Chart(dataset).mark_boxplot().encode(
-            alt.Y('Team:N',
+            alt.Y('TEAM:N',
                   title='Teams'),
             alt.X('stats:Q',
                   title=stats)

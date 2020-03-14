@@ -17,6 +17,7 @@ found in the following url:
 
 https://www.espn.com/nba/stats/player/_/season/2019/seasontype/2
 
+
 ### Installation:
 
 ```
@@ -107,6 +108,9 @@ To use the `nba_scraper.nba_scraper` function, please also ensure that an intern
 >>> nba_2018_regular = nba_scraper(season_year = 2018, season_type = "regular", csv_path = "nba_2018_regular.csv")
 ```
 
+__Step 3: Usage of `nba_boxplot`, `nba_ranking` and `nba_team_stats`__
+
+
 With the scraped data in the form of a `pandas.DataFrame` called `nba_2018_regular`, you can proceed to use the other functions in `pysketball`.
 
 ```py
@@ -119,6 +123,9 @@ With the scraped data in the form of a `pandas.DataFrame` called `nba_2018_regul
 >>> nba_team_stats.nba_team_stats(nba_2018_regular, stats_filter = ['GP', '3PM', 'FT%'],teams_filter = ['UTAH', 'PHX', 'DET'],positions_filter = ['C', 'PG'])
 ```
 
+### Notes 
+
+For more context on the column names of the scraped data set, please refer to the [dataset description file](https://github.com/UBC-MDS/pysketball/blob/master/dataset_description.md). This will help the user better understand what columns are included in the scraped data, as well as they mean.
 
 ### Credits
 This package was created with Cookiecutter and the UBC-MDS/cookiecutter-ubc-mds project template, modified from the [pyOpenSci/cookiecutter-pyopensci](https://github.com/pyOpenSci/cookiecutter-pyopensci) project template and the [audreyr/cookiecutter-pypackage](https://github.com/audreyr/cookiecutter-pypackage).

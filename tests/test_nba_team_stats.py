@@ -27,6 +27,9 @@ def test_nba_team_stats():
         "https://raw.githubusercontent.com/kfoofw/nba_espn/master/0.data/" +
         "NBA_reg_2018-2019.csv")
 
+    nba_data = nba_data.rename(columns={'Team': 'TEAM',
+                               'PLAYER': 'NAME'})
+
     # Test for TypeErrors in input arguments
     with raises(TypeError):
         nba_team_stats.nba_team_stats("random data")
