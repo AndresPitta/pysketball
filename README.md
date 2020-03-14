@@ -1,3 +1,5 @@
+<img src="imgs/pysketball_logo.JPG" width="200" height="75" align = "right">
+
 # pysketball 
 
 ![](https://github.com/UBC-MDS/pysketball/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/UBC-MDS/pysketball/branch/master/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/pysketball) ![Release](https://github.com/UBC-MDS/pysketball/workflows/Release/badge.svg)
