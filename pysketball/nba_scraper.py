@@ -152,15 +152,15 @@ def nba_scraper(season_year, season_type="regular", csv_path=None):
 
     # Stop driver
     driver.close()
-    
+
     # Types
     columns = ['GP', 'MIN', 'PTS', 'FGM', 'FGA',
                'FG%', '3PM', '3PA', '3P%', 'FTM',
-               'FTA', 'FT%', 'REB', 'AST', 'STL', 
+               'FTA', 'FT%', 'REB', 'AST', 'STL',
                'BLK', 'TO', 'DD2', 'TD3', 'PER']
-    
+
     df[columns] = df[columns].astype('float')
-    
+
     # If csv_path is given, store df
     if (csv_path is not None):
         # Store data without index column
@@ -170,4 +170,3 @@ def nba_scraper(season_year, season_type="regular", csv_path=None):
         season_year, season_type))
 
     return(df)
-           

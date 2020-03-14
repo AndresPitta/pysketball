@@ -23,8 +23,7 @@ def test_nba_boxplot():
                            "nba_espn/master/0.data/NBA_reg_2018-2019.csv")
 
     nba_2018 = nba_2018.rename(columns={'Team': 'TEAM',
-                               'PLAYER': 'NAME'}
-                              )
+                               'PLAYER': 'NAME'})
 
     # testing input of dataset
     with raises(TypeError, match="Input 'dataset' is not a dataset!"):

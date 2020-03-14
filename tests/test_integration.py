@@ -1,12 +1,8 @@
-import pandas as pd
-
-from pysketball import nba_scraper, nba_team_stats, nba_ranking, nba_boxplot
-
-from pytest import raises
-
 import altair as alt
 
-import numpy as np
+import pandas as pd
+
+from pysketball import nba_boxplot, nba_ranking, nba_scraper, nba_team_stats
 
 
 def test_integration(tmp_path):
@@ -25,7 +21,7 @@ def test_integration(tmp_path):
     assert isinstance(nba_ranking.nba_ranking(
         nba_2001, 'NAME', 'PTS', top=2, ascending=False, fun='mean'), tuple)
     assert isinstance(nba_ranking.nba_ranking(
-        nba_2001, 'NAME', 'PTS', top=2, ascending=True, fun='mean')[0], 
+        nba_2001, 'NAME', 'PTS', top=2, ascending=True, fun='mean')[0],
         pd.DataFrame)
     assert isinstance(nba_ranking.nba_ranking(nba_2001, 'NAME', 'PTS', top=2,
                       ascending=False, fun='mean')[1],

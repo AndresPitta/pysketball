@@ -28,8 +28,7 @@ def test_nba_team_stats():
         "NBA_reg_2018-2019.csv")
 
     nba_data = nba_data.rename(columns={'Team': 'TEAM',
-                               'PLAYER': 'NAME'}
-                              )  
+                               'PLAYER': 'NAME'})
 
     # Test for TypeErrors in input arguments
     with raises(TypeError):
