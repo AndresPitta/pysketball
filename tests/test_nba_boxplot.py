@@ -22,6 +22,10 @@ def test_nba_boxplot():
     nba_2018 = pd.read_csv("https://raw.githubusercontent.com/kfoofw/" +
                            "nba_espn/master/0.data/NBA_reg_2018-2019.csv")
 
+    nba_2018 = nba_2018.rename(columns={'Team': 'TEAM',
+                               'PLAYER': 'NAME'}
+                              )
+
     # testing input of dataset
     with raises(TypeError, match="Input 'dataset' is not a dataset!"):
         nba_boxplot.nba_boxplot(
@@ -56,7 +60,7 @@ def test_nba_boxplot():
 
     # testing wrong stats type
     with raises(TypeError, match="stats argument has to be numeric"):
-        nba_boxplot.nba_boxplot(nba_2018, stats="Team", position="POS")
+        nba_boxplot.nba_boxplot(nba_2018, stats="TEAM", position="POS")
 
     # testing plot output for teams
     assert isinstance(nba_boxplot.nba_boxplot(nba_2018, stats="GP", teams=[

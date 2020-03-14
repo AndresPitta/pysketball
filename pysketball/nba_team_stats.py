@@ -73,13 +73,13 @@ def nba_team_stats(nba_data, stats_filter=None, teams_filter=None,
 
     # Check if the teams_filter elements exist in the dataframe
     if teams_filter is not None:
-        if not set(teams_filter).issubset(set(nba_data['Team'].unique())):
+        if not set(teams_filter).issubset(set(nba_data['TEAM'].unique())):
             raise TypeError("Columns mentioned in teams_filter not found" +
                             " in data")
 
     # Filter data on teams
     if teams_filter is not None:
-        nba_data = nba_data[nba_data['Team'].isin(teams_filter)]
+        nba_data = nba_data[nba_data['TEAM'].isin(teams_filter)]
 
     # Filter data on positions
     if positions_filter is not None:
@@ -87,7 +87,7 @@ def nba_team_stats(nba_data, stats_filter=None, teams_filter=None,
 
     # Select stats to include
     if stats_filter is not None:
-        stats_filter = ['PLAYER', 'Team', 'POS'] + stats_filter
+        stats_filter = ['NAME', 'TEAM', 'POS'] + stats_filter
         nba_data = nba_data[stats_filter]
 
     # If all inputs (stats, teams, and positions) are NULL, show all
@@ -98,16 +98,16 @@ def nba_team_stats(nba_data, stats_filter=None, teams_filter=None,
     # Generate summary
     # If position is null, only group_by Teams
     if positions_filter is None:
-        group_by = ['Team']
+        group_by = ['TEAM']
     else:
-        group_by = ['Team', 'POS']
+        group_by = ['TEAM', 'POS']
 
     stats = dict()
     if stats_filter is None:
         stats_filter = list(nba_data.columns.values)
 
     stats_filter = [stat for stat in stats_filter if stat not in (
-        'PLAYER', 'Team', 'POS')]
+        'NAME', 'TEAM', 'POS')]
     for stat in stats_filter:
         stats[stat] = nba_data.groupby(group_by).describe()[stat]
 
