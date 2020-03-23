@@ -90,7 +90,7 @@ def test_nba_ranking_output():
         data, 'C', 'B', top=2, ascending=True, fun='mean')[0], pd.DataFrame)
     assert isinstance(nba_ranking.nba_ranking(data, 'C', 'B', top=2,
                       ascending=False, fun='mean')[1],
-                      alt.vegalite.v4.api.LayerChart)
+                      alt.vegalite.api.LayerChart)
     assert isinstance(nba_ranking.nba_ranking(data, 'C', 'B', top=15,
                       ascending=True, fun='mean')[1],
-                      alt.vegalite.v4.api.LayerChart)
+                      alt.vegalite.api.LayerChart)
