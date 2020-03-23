@@ -42,6 +42,27 @@ def nba_team_stats(nba_data, stats_filter=None, teams_filter=None,
                                       stats_filter = ['GP', '3PM', 'FT%'],
                                       teams_filter = ['UTAH', 'PHX', 'DET'],
                                       positions_filter = ['C', 'PG'])
+    {'GP':           count  mean       std   min    25%   50%    75%   max
+     Team POS
+     DET  C      2.0  73.5  7.778175  68.0  70.75  73.5  76.25  79.0
+          PG     1.0  82.0       NaN  82.0  82.00  82.0  82.00  82.0
+     PHX  C      1.0  71.0       NaN  71.0  71.00  71.0  71.00  71.0
+     UTAH C      1.0  81.0       NaN  81.0  81.00  81.0  81.00  81.0
+          PG     1.0  68.0       NaN  68.0  68.00  68.0  68.00  68.0,
+     '3PM':           count  mean       std  min    25%   50%    75%  max
+     Team POS
+     DET  C      2.0  0.05  0.070711  0.0  0.025  0.05  0.075  0.1
+          PG     1.0  2.10       NaN  2.1  2.100  2.10  2.100  2.1
+     PHX  C      1.0  0.00       NaN  0.0  0.000  0.00  0.000  0.0
+     UTAH C      1.0  0.00       NaN  0.0  0.000  0.00  0.000  0.0
+          PG     1.0  1.20       NaN  1.2  1.200  1.20  1.200  1.2,
+     'FT%':           count  mean       std   min   25%   50%   75%   max
+     Team POS
+     DET  C      2.0  68.6  13.57645  59.0  63.8  68.6  73.4  78.2
+          PG     1.0  86.4       NaN  86.4  86.4  86.4  86.4  86.4
+     PHX  C      1.0  74.6       NaN  74.6  74.6  74.6  74.6  74.6
+     UTAH C      1.0  63.6       NaN  63.6  63.6  63.6  63.6  63.6
+          PG     1.0  85.5       NaN  85.5  85.5  85.5  85.5  85.5}
     """
     # Check if nba_data is a DataFrame
     if not isinstance(nba_data, pd.DataFrame):
@@ -109,6 +130,6 @@ def nba_team_stats(nba_data, stats_filter=None, teams_filter=None,
     stats_filter = [stat for stat in stats_filter if stat not in (
         'NAME', 'TEAM', 'POS')]
     for stat in stats_filter:
-        stats[stat] = nba_data.groupby(group_by).describe()[stat]
+        stats[stat] = nba_data.groupby(group_by).describe().round(3)[stat]
 
     return stats
