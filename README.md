@@ -45,6 +45,83 @@ The official documentation is currently in development and not available now. We
 
 <https://pysketball.readthedocs.io/en/latest/>
 
+### Dependencies
+
+Before installing the package make sure your working environment complies with the following dependecies:
+
+- Python 3.7
+
+- Pandas 1.0.1 or higher. To install the lastest release of the package via conda-forge channels use:
+
+```sh
+conda install pandas
+```
+or via PyPI:
+
+```sh
+pip install --upgrade pandas
+```
+
+- Pytest 5.3.5 or higher. To install the lastest release of the package via conda-forge channels use:
+
+```sh
+conda install pytest
+```
+
+or via PyPI:
+
+```sh
+pip install --upgrade pytest
+```
+
+- Numpy 1.18.1 or higher. To install the lastest release of the package via conda-forge channels use:
+
+```sh
+conda install numpy
+```
+
+or via PyPI:
+
+```sh
+pip install --upgrade numpy
+```
+
+- Altair 4.0.1. To install this specific realese via conda-forge channels use:
+
+```sh
+conda install altair=4.0.1
+```
+
+or via PyPI:
+ 
+```sh
+pip install --upgrade altair==4.0.1
+```
+
+- Selenium 5.3.5 or higher. To install the lastest realese of this package via conda-forge channels use:
+
+```sh
+conda install selenium
+```
+
+- Request 2.23.0 or higher. To install the lastest realese of this package via conda-forge channels use:
+
+```sh
+conda install requests
+```
+
+or via PyPI:
+
+```sh
+pip install --upgrade requests
+```
+
+- Python-semantic-release 4.10.0 or higher. To install the lastest realese of this package via PyPI use:
+
+```sh
+pip install --upgrade python-semantic-release
+```
+
 ### Usage and Testing Instructions/Requirements
 
 The `pysketball` package uses the Selenium tool as part of its `nba_scraper` function. Thus, it is necessary to install a webdriver for Selenium's automated driver web browsing. 
@@ -118,8 +195,8 @@ With the scraped data in the form of a `pandas.DataFrame` called `nba_2018_regul
 >>> from pysketball.nba_ranking import nba_ranking
 >>> from pysketball.nba_team_stats import nba_team_stats
 >>> # Scrape regular season 2018/19 and return a dataframe while storing it as csv file called "nba_2018_regular.csv"
->>> nba_boxplot(nba_2018_regular, position= "POS", teams= None, stats= "GP")
->>> nba_ranking(nba_2018_regular, 'PLAYER' , 'GP', top = 2, ascending = False, fun = 'mean')
+>>> nba_boxplot(nba_2018_regular, position= 'POS', teams= None, stats= 'GP')
+>>> nba_ranking(nba_2018_regular, 'NAME' , 'GP', top = 2, ascending = False, fun = 'mean')
 >>> nba_team_stats.nba_team_stats(nba_2018_regular, stats_filter = ['GP', '3PM', 'FT%'],teams_filter = ['UTAH', 'PHX', 'DET'],positions_filter = ['C', 'PG'])
 ```
 
