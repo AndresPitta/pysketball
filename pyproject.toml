@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pysketball"
-version = "2.1.0"
+version = "2.1.1"
 description = "This is a Python package that scraps tabular ESPN NBA data from https://www.espn.com/nba/stats/player/_/season/2019/seasontype/2 and processes it"
 authors = [
             "Andres Pitta <apitta6@gmail.com>",
