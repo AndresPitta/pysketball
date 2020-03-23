@@ -69,7 +69,7 @@ def nba_boxplot(dataset, stats, position=None, teams=None):
         raise TypeError("teams must be a list")
 
     # Checks if the position exists in the dataframe
-    if position is not None and position is not 'POS':
+    if position is not None and position != 'POS':
         raise TypeError("Must input 'POS' in position argument")
 
     # Checks if the stats exists in the dataframe
