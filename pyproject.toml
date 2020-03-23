@@ -2,7 +2,12 @@
 name = "pysketball"
 version = "2.0.0"
 description = "This is a Python package that scraps tabular ESPN NBA data from https://www.espn.com/nba/stats/player/_/season/2019/seasontype/2 and processes it"
-authors = ["Andres Pitta <apitta6@gmail.com>"]
+authors = [
+            "Andres Pitta <apitta6@gmail.com>",
+            "Anand Shankar, <vanandshankar@yahoo.com>",
+            "Carlina Kim, <carlinaa.kim@gmail.com>",
+            "Kenneth Foo, <kfoofw@gmail.com>"
+          ]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/UBC-MDS/pysketball"
