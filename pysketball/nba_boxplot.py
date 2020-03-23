@@ -8,7 +8,8 @@ import pandas as pd
 def nba_boxplot(dataset, stats, position=None, teams=None):
     """
     Creates a boxplot of the categorical variable of interest on the y-axis and
-    the stat of interest on the x-axis.
+    the stat of interest on the x-axis. You can only use one of position or
+    teams argument for categorical variable and stats argument must be chosen.
 
     Parameters:
     -----------
@@ -68,8 +69,8 @@ def nba_boxplot(dataset, stats, position=None, teams=None):
         raise TypeError("teams must be a list")
 
     # Checks if the position exists in the dataframe
-    if position is not None and position not in dataset.columns:
-        raise TypeError(f"Column {position} not found in data")
+    if position is not None and position is not 'POS':
+        raise TypeError("Must input 'POS' in position argument")
 
     # Checks if the stats exists in the dataframe
     if stats not in dataset.columns:
