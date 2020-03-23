@@ -150,7 +150,7 @@ whereis chromedriver
 With that, add it to your PATH in your `.bashrc` file for Linux and Mac users.
 
 ```sh
-export PATH="<PATH_TO_CHROMEDRIVER.EXE>:$PATH"
+export PATH="<PATH_TO_CHROMEDRIVER>:$PATH"
 ```
 
 For Windows, please refer to this [article guide for instructions on adding PATH variables](https://helpdeskgeek.com/windows-10/add-windows-path-environment-variable/).
