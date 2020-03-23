@@ -63,7 +63,7 @@ def nba_ranking(data, column, by, top=10, ascending=True, fun='mean'):
 
     # The descending argument should be a boolean
     if (fun not in ['sum', 'mean']):
-        raise TypeError("The fun argument should be either var or mean")
+        raise TypeError("The fun argument should be either sum or mean")
 
     # Checks if the column exists in the dataframe
     if column not in data.columns:
