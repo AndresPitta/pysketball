@@ -19,7 +19,8 @@ def nba_scraper(season_year, season_type="regular", csv_path=None):
     season_year : int
         An integer input of the year of interest for the NBA season.
     season_type : string
-        A string input of the NBA season type (either "regular" or playoff).
+        A string input of the NBA season type (either "regular" or
+            "postseason").
         Default is "regular".
     csv_path_name : string
         A string input stating the path to store the scraped csv file and
