@@ -130,6 +130,6 @@ def nba_team_stats(nba_data, stats_filter=None, teams_filter=None,
     stats_filter = [stat for stat in stats_filter if stat not in (
         'NAME', 'TEAM', 'POS')]
     for stat in stats_filter:
-        stats[stat] = nba_data.groupby(group_by).describe()[stat]
+        stats[stat] = nba_data.groupby(group_by).describe().round(3)[stat]
 
     return stats
